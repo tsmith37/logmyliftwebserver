@@ -2,11 +2,11 @@ const Lift = (sequelize, Sequelize, exercise, workout) => {
     var lift = sequelize.define("Lift", {
 		weight: {
             type: Sequelize.INTEGER,
-            allownNull: false
+            allowNull: false
 		},
 		reps: {
 			type:Sequelize.INTEGER,
-            allownNull: false
+            allowNull: false
 		},
         description: {
             type: Sequelize.STRING(120)
