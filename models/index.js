@@ -1,13 +1,28 @@
 const dbConfig = require('../config/db.config.js');
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(dbConfig.db, dbConfig.user, dbConfig.password,
+
+sequelize = null;
+if (process.env.HEROKU_POSTGRESQL_OLIVE_URL)
+{
+	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_OLIVE_URL, {
+		dialect: dbConfig.dialect,
+		protocol: 'postgres',
+		port: match[4],
+		host: match[3],
+		logging: true
+	})
+}
+else
+{
+	sequelize = new Sequelize(dbConfig.db, dbConfig.user, dbConfig.password,
 	{
 		host: dbConfig.host,
 		dialect: dbConfig.dialect,
 		operatorAliases: false,
 		freezeTableName: true
 	});
+}
 
 const db = {};
 db.Sequelize = Sequelize;
