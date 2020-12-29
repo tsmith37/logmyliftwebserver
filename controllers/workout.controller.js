@@ -24,7 +24,7 @@ exports.findAll = (req, res) => {
 	const description = req.query.description;
     const sortBy = req.query.sortBy;
     const sortDir = req.query.sortDir;
-    var condition = description ? { description: { [Op.like]: `%${description}%` } } : null;
+    var condition = description ? { description: { [Op.iLike]: `%${description}%` } } : null;
     
     sortParams = ['createdAt', 'DESC'];
     if (sortBy)

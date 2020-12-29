@@ -1,9 +1,13 @@
+require('dotenv').config();
+
+const { DB_HOST, DB_USERNAME, DB_PASSWORD } = process.env;
+
 module.exports = {
-	host:'us-cdbr-east-02.cleardb.com',
-    user:'ba366f5c4ce938',
-    password:'e32c9a06',
-    db:'heroku_3a9f4bdc968c820',
-	dialect:'mysql',
+	host:DB_HOST,
+    user:DB_USERNAME,
+    password:DB_PASSWORD,
+    db:'LogMyLiftPostgresDb',
+	dialect:'postgres',
     multipleStatements:true
 };
 

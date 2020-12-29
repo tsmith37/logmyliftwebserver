@@ -4,8 +4,8 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
 	const lift = {
-		ExerciseId: req.body.exerciseId,
-		WorkoutId: req.body.workoutId,
+		exerciseId: req.body.exerciseId,
+		workoutId: req.body.workoutId,
 		weight: req.body.weight,
 		reps: req.body.reps,
     	description: req.body.description
@@ -33,19 +33,19 @@ exports.findAll = (req, res) => {
 	var condition = null;
 
 	if (exerciseId && workoutId) {
-		condition = {ExerciseId: exerciseId, WorkoutId: workoutId};
+		condition = {exercise_id: exerciseId, workout_id: workoutId};
 	}
 	else if (exerciseId) {
-		condition = {ExerciseId: exerciseId};
+		condition = {exercise_id: exerciseId};
 	}
 	else if(workoutId) {
-		condition = {WorkoutId: workoutId};
+		condition = {workout_id: workoutId};
     }
     
-    sortParams = ['createdAt', 'DESC'];
+    sortParams = ['created_at', 'DESC'];
     if (sortBy)
     {
-        if (sortBy !== 'createdAt' && sortBy !== 'weight') 
+        if (sortBy !== 'created_at' && sortBy !== 'weight') 
         {
             console.log("Invalid sort column. Ignoring.");
         }
@@ -66,7 +66,7 @@ exports.findAll = (req, res) => {
     }
 
 
-	Lift.findAll({ where: condition , include: "Exercise", order: [sortParams]})
+	Lift.findAll({ where: condition , include: "exercise", order: [sortParams]})
     	.then(data => {
         	res.send(data);
         })

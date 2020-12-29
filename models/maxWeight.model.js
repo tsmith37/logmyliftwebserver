@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const MaxWeight = sequelize.define("MaxWeight", {
-        exerciseId: {
+    const MaxWeight = sequelize.define("maxWeight", {
+        exercise_id: {
             type: Sequelize.INTEGER
         },
         trainingWeight: {
@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
         maxLiftLiftId: {
             type: Sequelize.INTEGER
         }
+    },
+    {
+        underscored: true
     });
 
     return MaxWeight;

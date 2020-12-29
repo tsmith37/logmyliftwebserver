@@ -1,5 +1,5 @@
 const Lift = (sequelize, Sequelize, exercise, workout) => {
-    var lift = sequelize.define("Lift", {
+    var lift = sequelize.define("lift", {
 		weight: {
             type: Sequelize.INTEGER,
             allowNull: false
@@ -11,6 +11,9 @@ const Lift = (sequelize, Sequelize, exercise, workout) => {
         description: {
             type: Sequelize.STRING(120)
         }
+    },
+    {
+        underscored: true
     });
 
     lift.belongsTo(exercise,
