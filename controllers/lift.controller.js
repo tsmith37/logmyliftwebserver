@@ -90,7 +90,7 @@ exports.findById = (req, res) => {
         return;
     }
 
-	Lift.findByPk(id, {include: "Exercise"})
+	Lift.findByPk(id, {include: "exercise"})
 		.then(data => {
             res.send(data);
             console.log
