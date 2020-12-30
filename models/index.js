@@ -3,9 +3,9 @@ const dbConfig = require('../config/db.config.js');
 const Sequelize = require('sequelize');
 
 sequelize = null;
-if (process.env.HEROKU_POSTGRESQL_OLIVE_URL)
+if (process.env.HEROKU_POSTGRESQL_TEAL_URL)
 {
-	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_OLIVE_URL, {
+	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_TEAL_URL, {
 		dialect: dbConfig.dialect,
 		protocol: 'postgres',
 		ssl: true,
