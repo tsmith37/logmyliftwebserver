@@ -10,7 +10,8 @@ if (process.env.HEROKU_POSTGRESQL_OLIVE_URL)
 		protocol: 'postgres',
 		ssl: true,
 		dialectOptions: {
-			ssl: true
+			ssl: true,
+			rejectUnauthorized: false
 		}
 	})
 }
