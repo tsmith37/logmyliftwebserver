@@ -8,8 +8,6 @@ if (process.env.HEROKU_POSTGRESQL_OLIVE_URL)
 	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_OLIVE_URL, {
 		dialect: dbConfig.dialect,
 		protocol: 'postgres',
-		port: match[4],
-		host: match[3],
 		logging: true
 	})
 }
