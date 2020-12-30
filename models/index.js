@@ -8,7 +8,10 @@ if (process.env.HEROKU_POSTGRESQL_OLIVE_URL)
 	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_OLIVE_URL, {
 		dialect: dbConfig.dialect,
 		protocol: 'postgres',
-		ssl: true
+		ssl: true,
+		dialectOptions: {
+			ssl: true
+		}
 	})
 }
 else
