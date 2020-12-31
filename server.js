@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
+
+require('dotenv').config()
 
 const app = express();
 
-// var corsOptions = {
-// 	origin: "http://localhost:8081"	
-// };
-// app.use(cors(corsOptions));
+var corsOptions = {
+	origin: process.env.BASE_URL
+};
+app.use(cors(corsOptions));
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -15,7 +17,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 const db = require('./models');
 db.sequelize.sync();
 
-require('dotenv').config()
 require('./routes/exercise.routes')(app);
 require('./routes/workout.routes')(app);
 require('./routes/lift.routes')(app);
