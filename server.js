@@ -18,6 +18,7 @@ require('./routes/workout.routes')(app);
 require('./routes/lift.routes')(app);
 require('./routes/maxWeight.routes')(app);
 require('./routes/selectedExercise.routes')(app);
+require('./routes/userSettings.routes')(app);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}..`));

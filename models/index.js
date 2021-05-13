@@ -37,5 +37,6 @@ db.workout = require('./workout.model.js')(sequelize, Sequelize);
 db.lift = require('./lift.model.js')(sequelize, Sequelize, db.exercise, db.workout);
 db.maxWeight = require('./maxWeight.model.js')(sequelize, Sequelize);
 db.selectedExercise = require('./selectedExercise.model.js')(sequelize, Sequelize);
+db.userSettings = require('./userSettings.model.js')(sequelize, Sequelize);
 
 module.exports = db;
