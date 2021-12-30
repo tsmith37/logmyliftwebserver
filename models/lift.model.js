@@ -10,6 +10,15 @@ const Lift = (sequelize, Sequelize, exercise, workout) => {
 		},
         description: {
             type: Sequelize.STRING(120)
+        },
+        calculatedMax: {
+            type: Sequelize.VIRTUAL,
+            get() {
+                return (this.weight / (1.0278 - (0.0278 * this.reps)));
+            },
+            set(value) {
+                throw new Error('Do not try to set the `calculatedMax` value!');
+            }
         }
     },
     {
