@@ -49,7 +49,12 @@ exports.findAll = (req, res) => {
 		condition = { training_program_id: programId };
 	}
 
-	TrainingWorkout.findAll({ where: condition })
+	let sortParams = [
+		['week', 'ASC'],
+		['day', 'ASC'],
+	];
+
+	TrainingWorkout.findAll({ where: condition, order: sortParams })
 		.then(data => {
 			res.send(data);
 		})
