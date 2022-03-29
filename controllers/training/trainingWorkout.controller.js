@@ -36,17 +36,30 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 	const name = req.query.name;
 	const programId = req.query.programId;
+	const week = req.query.week;
 
 	var condition = null;
 
-	if (name && programId) {
+	if (name && programId && week) {
+		condition = { name: { [Op.iLike]: `%${name}%` }, training_program_id: programId, week: week };
+	}
+	else if (name && programId) {
 		condition = { name: { [Op.iLike]: `%${name}%` }, training_program_id: programId };
+	}
+	else if (name && week) {
+		condition = { name: { [Op.iLike]: `%${name}%`, week: week } };
 	}
 	else if (name) {
 		condition = { name: { [Op.iLike]: `%${name}%` } };
 	}
+	else if (programId && week) {
+		condition = { training_program_id: programId, week: week };
+	}
 	else if (programId) {
 		condition = { training_program_id: programId };
+	}
+	else if (week) {
+		condition = { week: week };
 	}
 
 	let sortParams = [
